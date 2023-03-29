@@ -2,12 +2,8 @@ import { Input } from "antd";
 import React from "react";
 import { useState } from "react";
 
-const InputContainer = () => {
+const InputContainer = ({ handleWeather }) => {
   const [value, setValue] = useState("");
-
-  const handleWeather = () => {
-    //
-  };
 
   return (
     <div className="center-container">
@@ -16,7 +12,10 @@ const InputContainer = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === "Enter") handleWeather();
+          if (e.key === "Enter") {
+            handleWeather(value);
+            setValue("");
+          }
         }}
         className="input-container "
       />
